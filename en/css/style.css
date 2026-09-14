@@ -1,0 +1,727 @@
+/* ========================================
+   VARIÁVEIS GLOBAIS (cores institucionais UEM + paleta própria)
+   ======================================== */
+:root {
+    --verde-escuro: #004237;
+    --verde-medio: #007863;
+    --verde-claro: #00a88a;
+    --coral: #f27655;
+    --coral-escuro: #d85a3a;
+    --cinza-escuro: #2a2b2a;
+    --cinza-medio: #6b7280;
+    --cinza-claro: #f3f4f6;
+    --branco: #ffffff;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --sombra-forte: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --transicao: all 0.3s ease;
+}
+
+/* ========================================
+   RESET BÁSICO
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--cinza-escuro);
+    line-height: 1.6;
+    background: var(--branco);
+}
+
+a {
+    color: var(--verde-medio);
+    text-decoration: none;
+    transition: var(--transicao);
+}
+
+a:hover {
+    color: var(--coral);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Container centralizado */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ========================================
+   CABEÇALHO
+   ======================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--sombra);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--verde-escuro);
+    letter-spacing: 2px;
+}
+
+.logo .subtitle {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--cinza-medio);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--cinza-escuro);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 0.25rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--coral);
+    transition: var(--transicao);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.lang-switch {
+    background: var(--verde-escuro);
+    color: var(--branco) !important;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.lang-switch:hover {
+    background: var(--coral);
+    color: var(--branco) !important;
+}
+
+/* Botão menu mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--verde-escuro);
+    border-radius: 2px;
+    transition: var(--transicao);
+}
+
+/* ========================================
+   HERO (SEÇÃO INICIAL)
+   ======================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 100%);
+    color: var(--branco);
+    padding: 6rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(242, 118, 85, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 168, 138, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    max-width: 650px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ========================================
+   BOTÕES
+   ======================================== */
+.btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transicao);
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--coral);
+    color: var(--branco);
+}
+
+.btn-primary:hover {
+    background: var(--coral-escuro);
+    color: var(--branco);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-forte);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--branco);
+    border-color: var(--branco);
+}
+
+.btn-secondary:hover {
+    background: var(--branco);
+    color: var(--verde-escuro);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   SEÇÕES GERAIS
+   ======================================== */
+.section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--verde-escuro);
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--coral);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+/* ========================================
+   SOBRE
+   ======================================== */
+.about {
+    background: var(--cinza-claro);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: var(--cinza-escuro);
+}
+
+.about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stat-card {
+    background: var(--branco);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--sombra);
+    border-left: 4px solid var(--coral);
+    transition: var(--transicao);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-forte);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--verde-escuro);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--cinza-medio);
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+/* ========================================
+   PESQUISA (GRID DE CARDS)
+   ======================================== */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.research-card {
+    background: var(--branco);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+    transition: var(--transicao);
+    border-top: 4px solid var(--verde-medio);
+}
+
+.research-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-forte);
+    border-top-color: var(--coral);
+}
+
+.research-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.research-card h3 {
+    color: var(--verde-escuro);
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.research-card p {
+    color: var(--cinza-medio);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.research-topics {
+    list-style: none;
+    padding: 0;
+}
+
+.research-topics li {
+    padding: 0.4rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--cinza-escuro);
+}
+
+.research-topics li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-weight: bold;
+}
+
+/* ========================================
+   MEMBROS
+   ======================================== */
+.members {
+    background: var(--cinza-claro);
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.member-card {
+    background: var(--branco);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--sombra);
+    transition: var(--transicao);
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-forte);
+}
+
+.member-card.coordinator {
+    border-top: 4px solid var(--coral);
+}
+
+.member-photo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--branco);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.member-card h3 {
+    color: var(--verde-escuro);
+    margin-bottom: 0.5rem;
+}
+
+.member-role {
+    color: var(--coral);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.member-affiliation {
+    color: var(--cinza-medio);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.member-links {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.member-link {
+    background: var(--cinza-claro);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--cinza-escuro);
+}
+
+.member-link:hover {
+    background: var(--coral);
+    color: var(--branco);
+}
+
+/* ========================================
+   PUBLICAÇÕES
+   ======================================== */
+.publications-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.publications-intro {
+    font-size: 1.1rem;
+    color: var(--cinza-medio);
+    margin-bottom: 2rem;
+}
+
+.publications-placeholder {
+    background: var(--cinza-claro);
+    padding: 3rem;
+    border-radius: 12px;
+    border: 2px dashed var(--cinza-medio);
+}
+
+.placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.publications-placeholder p {
+    color: var(--cinza-medio);
+    font-weight: 500;
+}
+
+/* ========================================
+   CONTATO
+   ======================================== */
+.contact {
+    background: var(--cinza-claro);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.contact-info h3 {
+    color: var(--verde-escuro);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info > p {
+    color: var(--cinza-medio);
+    margin-bottom: 2rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.contact-item strong {
+    display: block;
+    color: var(--verde-escuro);
+    margin-bottom: 0.25rem;
+}
+
+.contact-item p,
+.contact-item a {
+    color: var(--cinza-medio);
+    font-size: 0.95rem;
+}
+
+/* Formulário */
+.contact-form {
+    background: var(--branco);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--cinza-escuro);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transicao);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--verde-medio);
+    box-shadow: 0 0 0 3px rgba(0, 120, 99, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .btn {
+    width: 100%;
+}
+
+/* ========================================
+   RODAPÉ
+   ======================================== */
+.footer {
+    background: var(--cinza-escuro);
+    color: var(--branco);
+    padding: 3rem 0 1.5rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: var(--branco);
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.footer-section ul li a:hover {
+    color: var(--coral);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+}
+
+/* ========================================
+   RESPONSIVIDADE (CELULAR)
+   ======================================== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 75px;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 75px);
+        background: var(--branco);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transicao);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+
+    .section-title {
+        font-size: 1.7rem;
+    }
+}
